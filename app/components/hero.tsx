@@ -3,7 +3,7 @@ import React from 'react';
 const Hero = () => {
   // const headline = `Stop Wrestling with Excel. Get Audit-Ready Crypto FIFO Reports in 60 Seconds.`;
   const headline = `Audit-Ready Crypto FIFO Reports in 60 Seconds.`;
-  const subheadline = `Ditch the messy spreadsheets. Manually log your altcoin buys and sells, track cost basis automatically, and download a flawless PDF profit/loss report for tax season.`;
+  const subheadline = `Ditch the messy spreadsheets. Log your transactions and download a PDF P&L report for tax season.`;
   const cta = `Secure Lifetime Access`;
 
   return (
