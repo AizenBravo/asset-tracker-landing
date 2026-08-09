@@ -6,26 +6,50 @@ import {
   FileSpreadsheet,
   FileText,
   Sparkles,
+  TrendingUp,
+  FormInput,
+  SlidersHorizontal,
 } from 'lucide-react';
 
 const comparisonDataItems = [
   {
-    id: 'calculations',
+    id: 'profit-tracking',
     beforeIcon: FileSpreadsheet,
-    afterIcon: Sparkles,
+    afterIcon: TrendingUp,
     expandedNode: {
-      title: '01 / Engine Math',
-      subtitle: 'Calculation Breakdown',
+      title: '01 / Profit Accuracy',
+      subtitle: 'Net Gains Calculation',
       description: {
         before: {
           subtitle: 'The Spreadsheet Trap:',
           explanation:
-            'Manual cell writing indexing errors, and messy calculations trying to trace cost basis for 15+ coins.',
+            'Accidentally breaking Excel formulas, getting cell reference errors, and losing track of your true capital gains across multiple assets.',
         },
         after: {
           subtitle: 'The 60s Fix:',
           explanation:
-            'Clean internal data schema tracks transaction queues automatically with immediate index output calculations.',
+            'The software handles all math internally. It instantly computes precise overall gains and individual transaction profits without human error.',
+        },
+      },
+    },
+  },
+  {
+    id: 'data-entry',
+    beforeIcon: FileSpreadsheet,
+    afterIcon: FormInput,
+    expandedNode: {
+      title: '02 / Clean Input',
+      subtitle: 'Streamlined Data Entry',
+      description: {
+        before: {
+          subtitle: 'The Spreadsheet Trap:',
+          explanation:
+            'Staring at massive tables with endless columns and rows, risking typos every time you scroll across the screen to type data manually.',
+        },
+        after: {
+          subtitle: 'The 60s Fix:',
+          explanation:
+            'A distraction-free, guided form built only for Buy and Sell actions. Just enter your asset type, amount, and price—the system handles the rest.',
         },
       },
     },
@@ -35,7 +59,7 @@ const comparisonDataItems = [
     beforeIcon: Database,
     afterIcon: CheckCircle2,
     expandedNode: {
-      title: '02 / Ledger Logic',
+      title: '03 / Ledger Logic',
       subtitle: 'FIFO Cost Tracking',
       description: {
         before: {
@@ -56,7 +80,7 @@ const comparisonDataItems = [
     beforeIcon: AlertTriangle,
     afterIcon: FileText,
     expandedNode: {
-      title: '03 / PDF Engine',
+      title: '04 / PDF Engine',
       subtitle: 'Audit-Ready Delivery',
       description: {
         before: {
@@ -68,6 +92,27 @@ const comparisonDataItems = [
           subtitle: 'The 60s Fix:',
           explanation:
             'One click compiles dates, assets, volumes, and exact gains directly into a minimalist PDF report.',
+        },
+      },
+    },
+  },
+  {
+    id: 'date-filtering',
+    beforeIcon: AlertTriangle,
+    afterIcon: SlidersHorizontal,
+    expandedNode: {
+      title: '05 / Custom Timelines',
+      subtitle: 'Date Range Control',
+      description: {
+        before: {
+          subtitle: 'The Spreadsheet Trap:',
+          explanation:
+            'Writing complex filter parameters or manually cutting and pasting table segments just to review a specific month or tax quarter.',
+        },
+        after: {
+          subtitle: 'The 60s Fix:',
+          explanation:
+            'Select any custom date range using a clean calendar picker to export a targeted snapshot of your historical profits whenever you need it.',
         },
       },
     },

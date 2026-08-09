@@ -122,7 +122,7 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
           <button
             onClick={handlePrev}
             aria-label="Rotate view counter-clockwise"
-            className="p-3 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-teal-500 dark:hover:border-teal-500 rounded-full bg-white dark:bg-zinc-900 transition-all duration-200 shadow-md active:scale-95 group"
+            className="p-3 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-teal-500 dark:hover:border-teal-500 rounded-full bg-white dark:bg-zinc-900 transition-all duration-200 shadow-md active:scale-95 group cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
           </button>
@@ -140,7 +140,7 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
           <button
             onClick={handleNext}
             aria-label="Rotate view clockwise"
-            className="p-3 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-teal-500 dark:hover:border-teal-500 rounded-full bg-white dark:bg-zinc-900 transition-all duration-200 shadow-md active:scale-95 group"
+            className="p-3 border border-zinc-200 dark:border-zinc-800 text-zinc-800 dark:text-zinc-200 hover:border-teal-500 dark:hover:border-teal-500 rounded-full bg-white dark:bg-zinc-900 transition-all duration-200 shadow-md active:scale-95 group cursor-pointer"
           >
             <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </button>
