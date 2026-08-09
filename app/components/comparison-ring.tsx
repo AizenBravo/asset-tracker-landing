@@ -36,11 +36,11 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
       </div> */}
 
       {/* Main Structural Container */}
-      <div className="relative w-full max-w-5xl flex flex-col items-center justify-center min-h-[580px] bg-red-200">
+      <div className="relative w-full max-w-5xl flex flex-col items-center justify-center min-h-[580px]">
         {/* ========================================================================= */}
         {/* 1. ARCHITECTURAL SPINNING RING (Desktop Only: Large Screens & Above)       */}
         {/* ========================================================================= */}
-        <div className="hidden lg:block relative w-[600px] h-[600px] flex items-center justify-center bg-purple-500">
+        <div className="hidden lg:block relative w-[600px] h-[600px] flex items-center justify-center">
           {/* Subtle Structural Track Ring */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none transform -rotate-90"
@@ -94,7 +94,7 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
           })}
 
           {/* Central Showcase Anchor Frame (Expanded Element View) */}
-          <div className="absolute w-[340px] h-[340px] border border-zinc-200/60 dark:border-zinc-900 rounded-lg p-6 shadow-2xl flex flex-col justify-center items-center z-20 text-center font-sans transition-all duration-500 bg-red-500 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
+          <div className="absolute w-[340px] h-[340px] bg-zinc-50 dark:bg-zinc-950 border border-zinc-200/60 dark:border-zinc-900 rounded-lg p-6 shadow-2xl flex flex-col justify-center items-center z-20 text-center font-sans transition-all duration-500 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
             {/* bg-zinc-50 dark:bg-zinc-950 */}
             {items[activeIndex].expandedNode}
           </div>
