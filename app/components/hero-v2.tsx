@@ -45,7 +45,7 @@ const HeroV2 = () => {
 
             {/* Action Buttons using your Palette */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-              <CTAButton>{cta}</CTAButton>
+              <CTAButton href="#presale-form">{cta}</CTAButton>
               <a
                 href="#crowdfund-section"
                 className="px-8 py-4 border border-zinc-200 hover:border-zinc-400 dark:border-zinc-800 dark:hover:border-zinc-600 text-zinc-800 dark:text-zinc-300 font-medium tracking-wide rounded-sm transition-all duration-200 text-center"
