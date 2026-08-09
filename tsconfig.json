@@ -19,7 +19,14 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@components": ["./app/components"],
+      "@shadcn": ["./app/shadcn"],
+      "@shadcn_components": ["./app/shadcn/components"],
+      "@shadcn_lib": ["./app/shadcn/lib"],
+      "@shadcn_utils": ["./app/shadcn/utils"],
+      "@shadcn_hooks": ["./app/shadcn/hooks"],
+      "@shadcn_ui": ["./app/shadcn/components/ui"]
     }
   },
   "include": [
