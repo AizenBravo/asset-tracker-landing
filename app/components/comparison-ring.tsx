@@ -26,21 +26,21 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
   return (
     <section className="relative w-full py-20 px-6 bg-white dark:bg-black overflow-hidden flex flex-col items-center justify-center transition-colors duration-300">
       {/* Dynamic Heading Anchor */}
-      <div className="text-center max-w-md mx-auto mb-16 space-y-3">
+      {/* <div className="text-center max-w-md mx-auto mb-16 space-y-3">
         <h2 className="text-2xl md:text-3xl font-black tracking-tight text-zinc-900 dark:text-white uppercase font-mono">
           The Pivot To Clarity
         </h2>
         <p className="text-xs tracking-wider text-zinc-400 dark:text-zinc-500 font-mono">
           Click the controls to rotate through core workflow comparisons
         </p>
-      </div>
+      </div> */}
 
       {/* Main Structural Container */}
-      <div className="relative w-full max-w-5xl flex flex-col items-center justify-center min-h-[580px]">
+      <div className="relative w-full max-w-5xl flex flex-col items-center justify-center min-h-[580px] bg-red-200">
         {/* ========================================================================= */}
         {/* 1. ARCHITECTURAL SPINNING RING (Desktop Only: Large Screens & Above)       */}
         {/* ========================================================================= */}
-        <div className="hidden lg:block relative w-[600px] h-[600px] flex items-center justify-center">
+        <div className="hidden lg:block relative w-[600px] h-[600px] flex items-center justify-center bg-purple-500">
           {/* Subtle Structural Track Ring */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none transform -rotate-90"
@@ -51,7 +51,8 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
               cy="300"
               r={radius}
               fill="none"
-              className="stroke-zinc-200/40 dark:stroke-zinc-800/40"
+              // className="stroke-zinc-200/40 dark:stroke-zinc-800/40"
+              className="stroke-zinc-800/40  dark:stroke-zinc-200/40"
               strokeWidth="2"
               strokeDasharray="4 8"
             />
@@ -93,7 +94,8 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
           })}
 
           {/* Central Showcase Anchor Frame (Expanded Element View) */}
-          <div className="absolute w-[340px] h-[340px] bg-zinc-50 dark:bg-zinc-950 border border-zinc-200/60 dark:border-zinc-900 rounded-lg p-6 shadow-2xl flex flex-col justify-center items-center z-20 text-center font-sans transition-all duration-500">
+          <div className="absolute w-[340px] h-[340px] border border-zinc-200/60 dark:border-zinc-900 rounded-lg p-6 shadow-2xl flex flex-col justify-center items-center z-20 text-center font-sans transition-all duration-500 bg-red-500 left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
+            {/* bg-zinc-50 dark:bg-zinc-950 */}
             {items[activeIndex].expandedNode}
           </div>
         </div>

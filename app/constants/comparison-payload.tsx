@@ -94,7 +94,7 @@ export const comparisonPayload: ComparisonItem[] = [
       </div>
     ),
     expandedNode: (
-      <div className="space-y-4">
+      <div className="space-y-4 bg-teal-300">
         <div className="text-amber-500 font-mono text-xs uppercase tracking-widest font-semibold">
           03 / PDF Engine
         </div>
