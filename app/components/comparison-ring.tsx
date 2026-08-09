@@ -40,7 +40,7 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
         {/* ========================================================================= */}
         {/* 1. ARCHITECTURAL SPINNING RING (Desktop Only: Large Screens & Above)       */}
         {/* ========================================================================= */}
-        <div className="hidden lg:block relative w-[600px] h-[600px] flex items-center justify-center">
+        <div className="hidden md:block relative w-[600px] h-[600px] flex items-center justify-center">
           {/* Subtle Structural Track Ring */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none transform -rotate-90"
@@ -103,7 +103,7 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
         {/* ========================================================================= */}
         {/* 2. ADAPTIVE FLATTENED INTERFACE (Mobile & Tablet Screen Viewports)         */}
         {/* ========================================================================= */}
-        <div className="lg:hidden w-full max-w-md flex flex-col items-center space-y-6">
+        <div className="md:hidden w-full max-w-md flex flex-col items-center space-y-6">
           {/* Active Condensed Indicator Node */}
           <div className="w-24 h-24 rounded-md bg-zinc-900 border border-zinc-700 text-white dark:bg-zinc-50 dark:border-white dark:text-black shadow-xl flex items-center justify-center scale-105 transition-all duration-300">
             {items[activeIndex].collapsedNode}
