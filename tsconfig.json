@@ -21,6 +21,7 @@
     "paths": {
       "@/*": ["./*"],
       "@my_components/*": ["./app/components/*"],
+      "@core/*": ["./app/core/*"],
       "@shadcn/*": ["./app/shadcn/*"],
       "@components/*": ["./app/shadcn/components/*"],
       "@lib/*": ["./app/shadcn/lib/*"],

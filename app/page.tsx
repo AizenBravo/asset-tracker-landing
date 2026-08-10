@@ -1,6 +1,7 @@
 import HeroV2 from '@my_components/hero-v2';
 import { ModeToggle } from '@my_components/navigation/mode-toggle';
 import UsVsThem from '@my_components/us-vs-them';
+import FooterV1 from './components/navigation/footer-v1';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <ModeToggle />
         <HeroV2 />
         <UsVsThem />
+        <FooterV1 />
       </main>
     </div>
   );
