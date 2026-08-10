@@ -2,22 +2,26 @@ import { ComparisonItem } from '@/app/interfaces/comparison-item';
 import {
   AlertTriangle,
   CheckCircle2,
-  Database,
   FileSpreadsheet,
   FileText,
-  Sparkles,
-  TrendingUp,
   FormInput,
-  SlidersHorizontal,
+  DecimalsArrowRight,
+  StickyNoteX,
+  ListEnd,
+  RefreshCwOff,
+  MailWarning,
+  CalendarDays,
+  FunnelX,
 } from 'lucide-react';
 
 const comparisonDataItems = [
   {
     id: 'profit-tracking',
-    beforeIcon: FileSpreadsheet,
-    afterIcon: TrendingUp,
+    // beforeIcon: FileSpreadsheet,
+    beforeIcon: StickyNoteX,
+    afterIcon: DecimalsArrowRight,
     expandedNode: {
-      title: '01 / Profit Accuracy',
+      title: 'Profit Accuracy',
       subtitle: 'Net Gains Calculation',
       description: {
         before: {
@@ -38,7 +42,7 @@ const comparisonDataItems = [
     beforeIcon: FileSpreadsheet,
     afterIcon: FormInput,
     expandedNode: {
-      title: '02 / Clean Input',
+      title: 'Clean Input',
       subtitle: 'Streamlined Data Entry',
       description: {
         before: {
@@ -56,10 +60,10 @@ const comparisonDataItems = [
   },
   {
     id: 'fifo-tracking',
-    beforeIcon: Database,
-    afterIcon: CheckCircle2,
+    beforeIcon: RefreshCwOff,
+    afterIcon: ListEnd,
     expandedNode: {
-      title: '03 / Ledger Logic',
+      title: 'Ledger Logic',
       subtitle: 'FIFO Cost Tracking',
       description: {
         before: {
@@ -77,10 +81,10 @@ const comparisonDataItems = [
   },
   {
     id: 'compliance-reports',
-    beforeIcon: AlertTriangle,
+    beforeIcon: MailWarning,
     afterIcon: FileText,
     expandedNode: {
-      title: '04 / PDF Engine',
+      title: 'PDF Engine',
       subtitle: 'Audit-Ready Delivery',
       description: {
         before: {
@@ -98,10 +102,10 @@ const comparisonDataItems = [
   },
   {
     id: 'date-filtering',
-    beforeIcon: AlertTriangle,
-    afterIcon: SlidersHorizontal,
+    beforeIcon: FunnelX,
+    afterIcon: CalendarDays,
     expandedNode: {
-      title: '05 / Custom Timelines',
+      title: 'Custom Timelines',
       subtitle: 'Date Range Control',
       description: {
         before: {
@@ -120,9 +124,10 @@ const comparisonDataItems = [
 ];
 
 export const comparisonPayload: ComparisonItem[] = comparisonDataItems.map(
-  (item) => {
+  (item, index) => {
     return {
       id: item.id,
+      title: item.expandedNode.title,
       collapsedNode: (
         <div className="flex items-center space-x-2 font-bold tracking-tight text-sm">
           <item.beforeIcon className="w-5 h-5 text-rose-500" />
@@ -133,7 +138,7 @@ export const comparisonPayload: ComparisonItem[] = comparisonDataItems.map(
       expandedNode: (
         <div className="space-y-4">
           <div className="text-amber-500 font-mono text-xs uppercase tracking-widest font-semibold">
-            {item.expandedNode.title}
+            {`${index + 1}. ${item.expandedNode.title}`}
           </div>
           <h3 className="text-xl font-extrabold text-zinc-900 dark:text-white">
             {item.expandedNode.subtitle}

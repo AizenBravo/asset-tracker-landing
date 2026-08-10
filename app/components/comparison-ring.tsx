@@ -80,7 +80,7 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
                   ${
                     isActive
                       ? 'bg-zinc-900 border-zinc-700 text-white dark:bg-zinc-50 dark:border-white dark:text-black scale-110 shadow-xl opacity-100 z-40'
-                      : 'bg-white/40 dark:bg-zinc-900/40 border-zinc-200/50 dark:border-zinc-800/50 backdrop-blur-md text-zinc-400 dark:text-zinc-600 opacity-40 hover:opacity-70 scale-95'
+                      : 'bg-white/40 dark:bg-zinc-900/40 border-zinc-200/50 dark:border-zinc-800/50 backdrop-blur-md text-zinc-400 dark:text-zinc-600 opacity-63 hover:opacity-85 scale-95'
                   } left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50`}
                 style={{
                   transform: `translate(${x}px, ${y}px)`,
@@ -89,6 +89,11 @@ export default function ComparisonRing({ items }: ComparisonRingProps) {
                 <div className="transform transition-transform duration-700 ease-out">
                   {item.collapsedNode}
                 </div>
+                {!isActive && (
+                  <p className="absolute left-[50%] top-[105%] translate-x-[-50%] text-sm  w-full text-center">
+                    {item.title}
+                  </p>
+                )}
               </div>
             );
           })}
