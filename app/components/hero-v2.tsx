@@ -1,5 +1,7 @@
 import React from 'react';
 import CTAButton from './cta-buttton';
+import { secondaryCtaButton } from '@core/css-custom-classes/button';
+import { bodyParagraph, heroTitle, monoBadge } from '@core/css-custom-classes/text';
 
 const HeroV2 = () => {
   // const headline = `Stop Wrestling with Excel. Get Audit-Ready Crypto FIFO Reports in 60 Seconds.`;
@@ -24,12 +26,12 @@ const HeroV2 = () => {
           {/* Column 1: Copy & Core Proposition (7 Cols on large screens) */}
           <div className="lg:col-span-7 flex flex-col space-y-6 text-left">
             {/* Small subtle tag indicating the speed focus */}
-            <div className="inline-flex items-center space-x-2 text-xs font-mono tracking-widest text-zinc-500 dark:text-zinc-400 uppercase">
+            <div className={monoBadge}>
               <span className="h-1.5 w-1.5 rounded-full bg-teal-500 animate-pulse" />
               <span>Instant FIFO Generation</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-zinc-900 dark:text-white">
+            <h1 className={heroTitle}>
               Stop Wrestling with Excel. <br />
               <span className="bg-gradient-to-r from-amber-500 via-amber-200 to-amber-500 bg-clip-text text-transparent dark:from-yellow-600 dark:via-amber-100 dark:to-yellow-600">
                 Get Audit-Ready
@@ -37,7 +39,7 @@ const HeroV2 = () => {
               Reports in 60s.
             </h1>
 
-            <p className="text-base md:text-lg text-zinc-600 dark:text-zinc-400 max-w-xl font-light leading-relaxed">
+            <p className={`${bodyParagraph} max-w-xl`}>
               Ditch messy spreadsheets. Manually log your altcoin buys and
               sells, track cost basis automatically, and download a flawless PDF
               profit/loss report for tax season.
@@ -48,7 +50,7 @@ const HeroV2 = () => {
               <CTAButton href="#presale-form">{cta}</CTAButton>
               <a
                 href="#crowdfund-section"
-                className="px-8 py-4 border border-zinc-200 hover:border-zinc-400 dark:border-zinc-800 dark:hover:border-zinc-600 text-zinc-800 dark:text-zinc-300 font-medium tracking-wide rounded-sm transition-all duration-200 text-center"
+                className={secondaryCtaButton}
               >
                 See Campaign Goals
               </a>
