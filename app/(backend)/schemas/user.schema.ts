@@ -21,6 +21,10 @@ const UserSchema: Schema<IUser> = new Schema<IUser>(
       type: Number,
       default: 0, // Default to registered email phase
     },
+    numberOfIntentsToRegisterUser: {
+      type: Number,
+      default: 1, // Default to 1 on initial creation
+    },
     numberOfIntentsToBuy: {
       type: Number,
       default: 0, // Increments every time they click 'Pay'

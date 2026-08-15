@@ -4,6 +4,7 @@ export interface IUser extends Document {
   password?: string; // Optional for Phase 1
   phaseOfSale: number; // 0 = Registered email, 1 = Paid Phase 2, etc.
   numberOfIntentsToBuy: number; // Raw counter for landing page "Pay" button clicks
+  numberOfIntentsToRegisterUser: number; // New counter for repeat sign-ups
   interactions: Array<{
     action: string;
     timestamp: Date;
