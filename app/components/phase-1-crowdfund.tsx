@@ -2,18 +2,7 @@
 
 import React, { useState } from 'react';
 import Phase1CrowdfundModal from './phase-1-crowdfund-modal';
-import { bodyParagraph, monoBadge, sectionTitle } from '@core/css-custom-classes/text';
-
-const mockRegisterUser = async (email: string) => {
-  await new Promise((resolve) => setTimeout(resolve, 800)); // Simulate network lag
-  if (!email || !email.includes('@')) throw new Error('Invalid email address');
-  return { success: true };
-};
-
-const mockTrackPurchaseIntention = async (email: string) => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return { success: true };
-};
+import { bodyParagraph, sectionTitle } from '@core/css-custom-classes/text';
 
 export default function Phase1Crowdfund() {
   const [step, setStep] = useState(1); // 1 = Email, 2 = Intent Lock, 3 = Closed Modal
@@ -26,7 +15,20 @@ export default function Phase1Crowdfund() {
     setLoading(true);
     setError('');
     try {
-      await mockRegisterUser(email);
+      const response = await fetch('/api/v1/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to register email.');
+      }
+
       setStep(2);
     } catch (err: any) {
       setError(err?.message || 'Something went wrong.');
@@ -39,10 +41,23 @@ export default function Phase1Crowdfund() {
     setLoading(true);
     setError('');
     try {
-      await mockTrackPurchaseIntention(email);
+      const response = await fetch('/api/v1/users/purchase-intent', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to log purchase intent.');
+      }
+
       setStep(3);
-    } catch (err) {
-      setError('Connection timeout. Please try again.');
+    } catch (err: any) {
+      setError(err?.message || 'Connection timeout. Please try again.');
     } finally {
       setLoading(false);
     }

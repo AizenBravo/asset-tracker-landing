@@ -34,7 +34,8 @@ const UserSchema: Schema<IUser> = new Schema<IUser>(
         action: { type: String, required: true },
         timestamp: { type: Date, default: Date.now },
       },
-    ],
+    ], // Erase if it goes beyond Phase 2 since we will need more space but fantastic for tracking user in
+    // Interactions in the pre-sale stage
 
     // --- PHASE 2 OPTIONAL: Paddle Billing ---
     /*

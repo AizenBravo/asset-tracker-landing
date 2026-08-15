@@ -1,19 +1,31 @@
 import connectDB from '@backend/config/mongo-db';
 import User from '@backend/schemas/user.schema';
+import { emailRegex } from '@backend/constants/regex';
 import { NextResponse } from 'next/server';
 
+// ONLY to create users for the Landing page (Phases: [1, 2])
 export async function POST(request: Request) {
   try {
     await connectDB();
-    const { email } = await request.json();
+    const body = await request.json();
+    const { email } = body || {};
 
-    if (!email) {
+    if (!email || typeof email !== 'string') {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+    }
+
+    const normalizedEmail = email.trim().toLowerCase();
+
+    if (!emailRegex.test(normalizedEmail)) {
+      return NextResponse.json(
+        { error: 'Please provide a valid email address' },
+        { status: 400 },
+      );
     }
 
     // Attempt to find and update an existing user atomically
     const existingUser = await User.findOneAndUpdate(
-      { email },
+      { email: normalizedEmail },
       {
         $inc: { numberOfIntentsToRegisterUser: 1 },
         $push: {
@@ -23,7 +35,7 @@ export async function POST(request: Request) {
           },
         },
       },
-      { new: true }, // Returns the newly updated document
+      { returnDocument: 'after' }, // Returns the newly updated document
     );
 
     // If an existing user was found and updated, return the custom welcome back message
@@ -31,7 +43,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           success: true,
-          message: `Welcome back user with email: ${email}. You already have an account, please proceed`,
+          message: `Welcome back user with email: ${normalizedEmail}. You already have an account, please proceed`,
           userId: existingUser._id,
         },
         { status: 200 },
@@ -40,7 +52,7 @@ export async function POST(request: Request) {
 
     // If no user exists, create a brand new one
     const newUser = await User.create({
-      email,
+      email: normalizedEmail,
       phaseOfSale: 0,
       numberOfIntentsToBuy: 0,
       numberOfIntentsToRegisterUser: 1, // First intent log
@@ -58,7 +70,7 @@ export async function POST(request: Request) {
   } catch (error: any) {
     return NextResponse.json(
       { error: error.message || 'Internal Server Error' },
-      { status: 500 },
+      { status: error.name === 'ValidationError' ? 400 : 500 },
     );
   }
 }
