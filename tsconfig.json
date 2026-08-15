@@ -27,7 +27,8 @@
       "@lib/*": ["./app/shadcn/lib/*"],
       "@utils/*": ["./app/shadcn/utils/*"],
       "@hooks/*": ["./app/shadcn/hooks/*"],
-      "@ui/*": ["./app/shadcn/ui/*"]
+      "@ui/*": ["./app/shadcn/ui/*"],
+      "@backend/*": ["./app/(backend)/*"]
     }
   },
   "include": [
