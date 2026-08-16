@@ -19,7 +19,16 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@my_components/*": ["./app/components/*"],
+      "@core/*": ["./app/core/*"],
+      "@shadcn/*": ["./app/shadcn/*"],
+      "@components/*": ["./app/shadcn/components/*"],
+      "@lib/*": ["./app/shadcn/lib/*"],
+      "@utils/*": ["./app/shadcn/utils/*"],
+      "@hooks/*": ["./app/shadcn/hooks/*"],
+      "@ui/*": ["./app/shadcn/ui/*"],
+      "@backend/*": ["./app/(backend)/*"]
     }
   },
   "include": [
