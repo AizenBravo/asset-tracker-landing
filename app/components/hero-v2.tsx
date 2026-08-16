@@ -1,7 +1,13 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import CTAButton from './cta-buttton';
 import { secondaryCtaButton } from '@core/css-custom-classes/button';
-import { bodyParagraph, heroTitle, monoBadge } from '@core/css-custom-classes/text';
+import {
+  bodyParagraph,
+  heroTitle,
+  monoBadge,
+} from '@core/css-custom-classes/text';
 
 const HeroV2 = () => {
   // const headline = `Stop Wrestling with Excel. Get Audit-Ready Crypto FIFO Reports in 60 Seconds.`;
@@ -12,6 +18,36 @@ const HeroV2 = () => {
   };
   const subheadline = `Ditch the messy spreadsheets. Log your transactions and download a PDF P&L report for tax season.`;
   const cta = `Secure Lifetime Access`;
+
+  const demoVideoSource = '/assets/videos/demo_comp_v2.mp4';
+  const [videoBlobUrl, setVideoBlobUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    let createdUrl: string | null = null;
+
+    fetch(demoVideoSource)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.blob();
+      })
+      .then((blob) => {
+        if (!isMounted) return;
+        const mp4Blob = new Blob([blob], { type: 'video/mp4' });
+        createdUrl = URL.createObjectURL(mp4Blob);
+        setVideoBlobUrl(createdUrl);
+      })
+      .catch((err) => {
+        console.error('Failed to load video blob:', err);
+      });
+
+    return () => {
+      isMounted = false;
+      if (createdUrl) {
+        URL.revokeObjectURL(createdUrl);
+      }
+    };
+  }, [demoVideoSource]);
 
   return (
     <section className="relative min-h-[90vh] w-full overflow-hidden bg-white text-zinc-900 transition-colors duration-300 dark:bg-black dark:text-zinc-50 flex items-center">
@@ -48,10 +84,7 @@ const HeroV2 = () => {
             {/* Action Buttons using your Palette */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
               <CTAButton href="#presale-form">{cta}</CTAButton>
-              <a
-                href="#crowdfund-section"
-                className={secondaryCtaButton}
-              >
+              <a href="#crowdfund-section" className={secondaryCtaButton}>
                 See Campaign Goals
               </a>
             </div>
@@ -60,7 +93,7 @@ const HeroV2 = () => {
           {/* Column 2: The Fast Product Demo Container (5 Cols on large screens) */}
           <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end">
             {/* Speed Slash Shape Frame to break the rectangle pattern */}
-            <div className="relative w-full max-w-[450px] aspect-[4/5] bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 p-3 rounded-lg overflow-hidden group shadow-2xl">
+            <div className="relative w-full max-w-[680px] bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800 p-3 rounded-lg overflow-hidden group shadow-2xl">
               {/* Internal Accent Lines to draw eyes to the video */}
               <div className="absolute top-0 right-0 h-16 w-[1px] bg-teal-500/40" />
               <div className="absolute bottom-0 left-0 h-16 w-[1px] bg-amber-500/40" />
@@ -69,19 +102,30 @@ const HeroV2 = () => {
               <div className="w-full h-full relative overflow-hidden rounded-md bg-zinc-200 dark:bg-zinc-950 flex items-center justify-center border border-zinc-300/40 dark:border-zinc-900">
                 {/* YOUR DEMO FILE REPLACES THIS */}
                 {/* <video src="/demo.mp4" autoPlay loop muted playsInline className="w-full h-full object-cover" /> */}
+                <video
+                  src={videoBlobUrl || demoVideoSource}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  controlsList="nodownload"
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="w-full h-full object-cover"
+                />
 
                 {/* Placeholder graphic showing layout intent */}
-                <div className="text-center p-6 space-y-3 font-mono opacity-60">
+                {/* <div className="text-center p-6 space-y-3 font-mono opacity-60">
                   <div className="text-teal-600 dark:text-teal-400 text-2xl font-bold">
                     ▶ APP DEMO GIF
                   </div>
                   <p className="text-xs text-zinc-500">
                     Inputs Data → Generates PDF → Shows Clean Report Outcomes
                   </p>
-                </div>
+                </div> */}
 
                 {/* Subtle speed-blur lighting indicator at the bottom of the video */}
-                <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-70 group-hover:scale-x-110 transition-transform duration-700" />
+                <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-70 group-hover:scale-x-110 transition-transform duration-700 pointer-events-none" />
               </div>
             </div>
 

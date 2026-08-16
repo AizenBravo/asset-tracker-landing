@@ -9,8 +9,9 @@ export function flexCenterTwoAxis({
   return `flex ${flexDirection} justify-between items-center`;
 }
 
-
-export function columnFlex({ gapSize = GapSize.MEDIUM }: {
+export function columnFlex({
+  gapSize = GapSize.MEDIUM,
+}: {
   gapSize?: GapSize;
 }) {
   return `flex flex-col ${gapSize}`;
