@@ -1,7 +1,23 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async headers() {
+    return [
+      {
+        source: '/assets/videos/:path*',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'video/mp4',
+          },
+          {
+            key: 'Accept-Ranges',
+            value: 'bytes',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
