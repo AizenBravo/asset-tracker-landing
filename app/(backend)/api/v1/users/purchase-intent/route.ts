@@ -31,7 +31,10 @@ export async function POST(request: Request) {
       {
         $inc: { numberOfIntentsToBuy: 1 },
         $push: {
-          interactions: { action: 'CLICKED_PAY', timestamp: new Date() },
+          interactions: {
+            $each: [{ action: 'CLICKED_PAY', timestamp: new Date() }],
+            $slice: -20, // Keeps ONLY the 20 most recent interactions, preventing DB bloat
+          },
         },
       },
       { returnDocument: 'after' }, // Returns the newly updated document
